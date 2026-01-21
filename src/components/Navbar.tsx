@@ -14,7 +14,10 @@ const navLinks = [
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme, systemTheme } = useTheme();
   const location = useLocation();
+  const currentTheme = theme === "system" ? systemTheme : theme;
 
   useEffect(() => {
     const handleScroll = () => {
