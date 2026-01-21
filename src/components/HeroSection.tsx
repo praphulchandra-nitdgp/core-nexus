@@ -96,7 +96,7 @@ const HeroSection = () => {
                 className="w-full h-full object-cover rounded-full animate-float"
                 style={{ animationDelay: '-3s' }}
               />
-              <div className="absolute inset-0 rounded-full glow-cyan -z-10 scale-125" />
+
             </div>
           </motion.div>
         </div>
