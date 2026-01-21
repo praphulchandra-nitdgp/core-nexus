@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 import { Lightbulb, Cpu, FlaskConical, Users } from "lucide-react";
 
 const features = [
