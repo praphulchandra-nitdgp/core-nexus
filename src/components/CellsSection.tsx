@@ -30,7 +30,7 @@ const cells: Cell[] = [
     name: "WCDT",
     description:
       "Web, Content & Design Team. Crafting stunning websites, compelling content, and beautiful designs that tell our story.",
-    tags: ["Web Dev", "UI/UX", "Content"],
+    tags: ["Web Dev", "Graphics Design", "Video Editing"],
     image: orb5,
   },
   {
