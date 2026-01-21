@@ -64,6 +64,12 @@ export default function Footer() {
                 <a href="#" className="flex items-center gap-2 hover:text-foreground transition">
                   <Linkedin className="w-4 h-4" /> LinkedIn
                 </a>
+                <a href="#" className="flex items-center gap-2 hover:text-foreground transition">
+                  <Twitter className="w-4 h-4" /> X
+                </a>
+                <a href="#" className="flex items-center gap-2 hover:text-foreground transition">
+                  <Facebook className="w-4 h-4" /> Facebook
+                </a>
               </div>
             </div>
           </div>
