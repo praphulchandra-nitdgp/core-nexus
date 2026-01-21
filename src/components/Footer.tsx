@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Instagram, Linkedin, Mail } from "lucide-react";
+import { Instagram, Linkedin, Mail, Facebook, Twitter } from "lucide-react";
 
 const navLinks = [
   { href: "/", label: "Home" },
