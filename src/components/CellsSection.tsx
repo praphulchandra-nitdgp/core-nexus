@@ -16,7 +16,7 @@ const cells: Cell[] = [
     name: "Core Cell",
     description:
       "The backbone of CCA operations. Core Cell handles event management, coordination, and ensures smooth functioning of all club activities.",
-    tags: ["Management", "Leadership", "Events"],
+    tags: ["Management", "Leadership", "Event Management"],
     image: orb3,
   },
   {
@@ -37,7 +37,7 @@ const cells: Cell[] = [
     name: "R&D Cell",
     description:
       "Research and Development hub. Explore emerging technologies, conduct experiments, and publish groundbreaking work.",
-    tags: ["Research", "AI/ML", "Innovation"],
+    tags: ["Research", "AI/ML", "Cyber Security"],
     image: orb3,
   },
   {
