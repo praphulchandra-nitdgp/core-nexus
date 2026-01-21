@@ -72,6 +72,17 @@ const Navbar = () => {
               {link.label}
             </Link>
           ))}
+          <button
+            onClick={toggleTheme}
+            aria-label="Toggle theme"
+            className="p-2 rounded-md hover:bg-muted/30 transition-colors"
+          >
+            {mounted && (currentTheme === "dark" ? (
+              <Sun className="w-5 h-5" />
+            ) : (
+              <Moon className="w-5 h-5" />
+            ))}
+          </button>
           <Button
             asChild
             className="gradient-bg text-primary-foreground border-0 hover:opacity-90 transition-opacity px-6"
