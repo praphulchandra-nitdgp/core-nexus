@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 import orb3 from "@/assets/3d-orb-3.jpg";
 import orb4 from "@/assets/3d-orb-4.jpg";
 import orb5 from "@/assets/3d-orb-5.jpg";
@@ -48,8 +50,17 @@ const cells: Cell[] = [
 ];
 
 const CellsSection = () => {
+  const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true });
+
   return (
-    <section id="cells" className="py-24 relative">
+    <motion.section
+      ref={ref}
+      id="cells"
+      className="py-24 relative"
+      initial={{ opacity: 0, y: 50 }}
+      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+    >
       {/* Section divider */}
       <div className="section-divider mb-24" />
 
@@ -68,11 +79,14 @@ const CellsSection = () => {
         {/* Cell rows */}
         <div className="space-y-8">
           {cells.map((cell, index) => (
-            <div
+            <motion.div
               key={cell.name}
               className={`group glass rounded-2xl p-6 md:p-8 hover-lift transition-all ${
                 index % 2 === 0 ? "" : "md:flex-row-reverse"
               }`}
+              initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+              animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+              transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
             >
               <div
                 className={`flex flex-col md:flex-row items-center gap-6 md:gap-10 ${
@@ -117,11 +131,11 @@ const CellsSection = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

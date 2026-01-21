@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Sun, Moon } from "lucide-react";
+import { useTheme } from "next-themes";
 
 const navLinks = [
   { href: "/#home", label: "Home" },
+  { href: "/#aarohan", label: "Aarohan" },
   { href: "/#about", label: "About" },
   { href: "/#cells", label: "Cells" },
   { href: "/apply", label: "Apply" },
@@ -13,7 +15,14 @@ const navLinks = [
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme, systemTheme } = useTheme();
   const location = useLocation();
+  const currentTheme = theme === "system" ? systemTheme : theme;
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,6 +40,10 @@ const Navbar = () => {
         element.scrollIntoView({ behavior: "smooth" });
       }
     }
+  };
+
+  const toggleTheme = () => {
+    setTheme(currentTheme === "dark" ? "light" : "dark");
   };
 
   return (
@@ -60,6 +73,17 @@ const Navbar = () => {
               {link.label}
             </Link>
           ))}
+          <button
+            onClick={toggleTheme}
+            aria-label="Toggle theme"
+            className="p-2 rounded-md hover:bg-muted/30 transition-colors"
+          >
+            {mounted && (currentTheme === "dark" ? (
+              <Sun className="w-5 h-5" />
+            ) : (
+              <Moon className="w-5 h-5" />
+            ))}
+          </button>
           <Button
             asChild
             className="gradient-bg text-primary-foreground border-0 hover:opacity-90 transition-opacity px-6"
@@ -91,6 +115,22 @@ const Navbar = () => {
                 {link.label}
               </Link>
             ))}
+            <button
+              onClick={toggleTheme}
+              className="text-muted-foreground hover:text-foreground transition-colors text-left py-2 flex items-center gap-2"
+            >
+              {mounted && (currentTheme === "dark" ? (
+                <>
+                  <Sun className="w-4 h-4" />
+                  <span>Light Mode</span>
+                </>
+              ) : (
+                <>
+                  <Moon className="w-4 h-4" />
+                  <span>Dark Mode</span>
+                </>
+              ))}
+            </button>
             <Button
               asChild
               className="gradient-bg text-primary-foreground w-full mt-2"

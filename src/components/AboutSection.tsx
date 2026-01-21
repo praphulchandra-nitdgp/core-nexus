@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 import { Lightbulb, Cpu, FlaskConical, Users } from "lucide-react";
 
 const features = [
@@ -28,8 +30,17 @@ const features = [
 ];
 
 const AboutSection = () => {
+  const { ref, inView } = useInView({ threshold: 0.2, triggerOnce: true });
+
   return (
-    <section id="about" className="py-24 relative">
+    <motion.section
+      ref={ref}
+      id="about"
+      className="py-24 relative"
+      initial={{ opacity: 0, y: 50 }}
+      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+    >
       {/* Section divider */}
       <div className="section-divider mb-24" />
 
@@ -67,7 +78,7 @@ const AboutSection = () => {
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

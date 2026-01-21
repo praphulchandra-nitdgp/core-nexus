@@ -3,6 +3,7 @@ import { Instagram, Linkedin, Mail } from "lucide-react";
 
 const navLinks = [
   { href: "/", label: "Home" },
+  { href: "/#aarohan", label: "Aarohan" },
   { href: "/#about", label: "About" },
   { href: "/#cells", label: "Cells" },
   { href: "/apply", label: "Apply" },
