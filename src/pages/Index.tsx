@@ -1,5 +1,7 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
+import PerformersBanner from "@/components/PerformersBanner";
+import AarohanSection from "@/components/AarohanSection";
 import AboutSection from "@/components/AboutSection";
 import CellsSection from "@/components/CellsSection";
 import Footer from "@/components/Footer";
