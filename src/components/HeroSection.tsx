@@ -1,25 +1,19 @@
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
 import orb1 from "@/assets/3d-orb-1.png";
 import orb2 from "@/assets/3d-orb-2.png";
 
 const HeroSection = () => {
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    } 
-  };
-
   return (
     <section
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
     >
       {/* Background gradient effects */}
-      <div className="absolute inset-0 bg-gradient-radial from-primary/10 via-transparent to-transparent" />
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-purple/20 rounded-full blur-3xl animate-pulse-glow" />
-      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-cyan/20 rounded-full blur-3xl animate-pulse-glow delay-1000" />
+      <div className="absolute inset-0 bg-gradient-radial from-primary/5 via-transparent to-transparent" />
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-purple/10 rounded-full blur-3xl animate-pulse-glow" />
+      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-cyan/10 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: '1s' }} />
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -47,18 +41,23 @@ const HeroSection = () => {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
               <Button
+                asChild
                 size="lg"
-                className="gradient-bg text-foreground font-semibold px-8 py-6 text-lg glow-purple hover:opacity-90 transition-opacity"
-                onClick={() => scrollToSection("#auditions")}
+                className="gradient-bg text-primary-foreground font-semibold px-8 py-6 text-lg glow-purple hover:opacity-90 transition-opacity"
               >
-                Apply Now
-                <ArrowRight className="ml-2 w-5 h-5" />
+                <Link to="/apply">
+                  Apply Now
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Link>
               </Button>
               <Button
                 size="lg"
                 variant="outline"
-                className="gradient-border bg-transparent hover:bg-primary/10 text-foreground px-8 py-6 text-lg"
-                onClick={() => scrollToSection("#cells")}
+                className="gradient-border bg-transparent hover:bg-muted/50 text-foreground px-8 py-6 text-lg"
+                onClick={() => {
+                  const element = document.querySelector("#cells");
+                  if (element) element.scrollIntoView({ behavior: "smooth" });
+                }}
               >
                 Explore Cells
               </Button>
@@ -75,7 +74,7 @@ const HeroSection = () => {
                 className="w-full h-full object-cover rounded-full animate-float"
               />
               {/* Glow effect behind */}
-              <div className="absolute inset-0 rounded-full bg-gradient-iridescent opacity-30 blur-3xl -z-10 scale-110" />
+              <div className="absolute inset-0 rounded-full bg-gradient-iridescent opacity-20 blur-3xl -z-10 scale-110" />
             </div>
 
             {/* Floating secondary orb */}
@@ -83,21 +82,11 @@ const HeroSection = () => {
               <img
                 src={orb2}
                 alt="Secondary 3D Orb"
-                className="w-full h-full object-cover rounded-full animate-float delay-1000"
+                className="w-full h-full object-cover rounded-full animate-float"
+                style={{ animationDelay: '-3s' }}
               />
               <div className="absolute inset-0 rounded-full glow-cyan -z-10 scale-125" />
             </div>
-
-            {/* Sketchfab Embed - floating abstract model */}
-            {/* <div className="absolute -top-5 -right-5 w-36 h-36 md:w-48 md:h-48 rounded-xl overflow-hidden glass">
-              <iframe
-                title="3D Model"
-                className="w-full h-full"
-                src="https://sketchfab.com/models/faef9fe5ace445e7b2989d1c1ece361c/embed?autostart=1&ui_hint=0&ui_theme=dark&dnt=1"
-                allow="autoplay; fullscreen; xr-spatial-tracking"
-                style={{ border: "none" }}
-              />
-            </div> */}
           </div>
         </div>
       </div>

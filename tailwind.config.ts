@@ -57,7 +57,6 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        // Custom gradient colors for direct use
         gradient: {
           purple: "hsl(var(--gradient-purple))",
           pink: "hsl(var(--gradient-pink))",
@@ -89,8 +88,8 @@ export default {
           "50%": { transform: "translateY(-20px)" },
         },
         "pulse-glow": {
-          "0%, 100%": { opacity: "0.6" },
-          "50%": { opacity: "1" },
+          "0%, 100%": { opacity: "0.4" },
+          "50%": { opacity: "0.7" },
         },
         "gradient-shift": {
           "0%": { backgroundPosition: "0% 50%" },
@@ -101,6 +100,12 @@ export default {
           from: { transform: "rotate(0deg)" },
           to: { transform: "rotate(360deg)" },
         },
+        "blob-move": {
+          "0%, 100%": { transform: "translate(0, 0) scale(1)" },
+          "25%": { transform: "translate(20px, -30px) scale(1.1)" },
+          "50%": { transform: "translate(-20px, 20px) scale(0.9)" },
+          "75%": { transform: "translate(30px, 10px) scale(1.05)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -109,6 +114,7 @@ export default {
         "pulse-glow": "pulse-glow 3s ease-in-out infinite",
         "gradient-shift": "gradient-shift 8s ease infinite",
         "spin-slow": "spin-slow 20s linear infinite",
+        "blob-move": "blob-move 15s ease-in-out infinite",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
