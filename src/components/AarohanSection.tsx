@@ -29,15 +29,9 @@ const AarohanSection = () => {
             The Clubs and Centers of Activity (CCA) play a vital role in Aarohan, bringing technical workshops, management events, 
             cultural performances, and interactive sessions that inspire and engage participants from across the nation.
           </p>
-          <p className="text-base md:text-lg text-gray-200 mb-8">
+          <p className="text-base md:text-lg text-gray-200">
             Join us for an unforgettable experience of talent, technology, and teamwork!
           </p>
-          <Button
-            asChild
-            className="gradient-bg text-primary-foreground border-0 hover:opacity-90 transition-opacity px-8 py-2 text-base md:text-lg"
-          >
-            <Link to="/apply">Apply to Perform</Link>
-          </Button>
         </div>
       </div>
     </section>
