@@ -5,7 +5,14 @@ import { useInView } from "react-intersection-observer";
 const AarohanSection = () => {
   const { ref, inView } = useInView({ threshold: 0.3, triggerOnce: true });
   return (
-    <section id="aarohan" className="relative h-[60vh] md:h-[70vh] lg:h-screen overflow-hidden">
+    <motion.section
+      ref={ref}
+      id="aarohan"
+      className="relative h-[60vh] md:h-[70vh] lg:h-screen overflow-hidden"
+      initial={{ opacity: 0, y: 50 }}
+      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+    >
       {/* YouTube Video Background */}
       <div className="absolute inset-0 w-full h-full">
         <iframe
@@ -37,7 +44,7 @@ const AarohanSection = () => {
           </p>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
