@@ -1,17 +1,19 @@
 import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
-  { href: "#home", label: "Home" },
-  { href: "#about", label: "About" },
-  { href: "#cells", label: "Cells" },
-  { href: "#Aarohan", label: "Aarohan" },
+  { href: "/#home", label: "Home" },
+  { href: "/#about", label: "About" },
+  { href: "/#cells", label: "Cells" },
+  { href: "/apply", label: "Apply" },
 ];
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,12 +23,14 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+  const handleNavClick = (href: string) => {
     setIsMobileMenuOpen(false);
+    if (href.startsWith("/#")) {
+      const element = document.querySelector(href.replace("/", ""));
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
   };
 
   return (
@@ -37,29 +41,30 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
         {/* Logo */}
-        <button
-          onClick={() => scrollToSection("#home")}
+        <Link
+          to="/"
           className="text-2xl font-bold gradient-text hover:opacity-80 transition-opacity"
         >
           CCA
-        </button>
+        </Link>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
-            <button
+            <Link
               key={link.href}
-              onClick={() => scrollToSection(link.href)}
+              to={link.href}
+              onClick={() => handleNavClick(link.href)}
               className="text-muted-foreground hover:text-foreground transition-colors text-sm font-medium"
             >
               {link.label}
-            </button>
+            </Link>
           ))}
           <Button
-            onClick={() => scrollToSection("#auditions")}
-            className="gradient-border bg-transparent hover:bg-primary/10 text-foreground px-6"
+            asChild
+            className="gradient-bg text-primary-foreground border-0 hover:opacity-90 transition-opacity px-6"
           >
-            Apply Now
+            <Link to="/apply">Apply Now</Link>
           </Button>
         </div>
 
@@ -74,22 +79,25 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden glass mt-2 mx-4 rounded-lg p-4 animate-fade-in">
+        <div className="md:hidden glass mt-2 mx-4 rounded-lg p-4">
           <div className="flex flex-col gap-4">
             {navLinks.map((link) => (
-              <button
+              <Link
                 key={link.href}
-                onClick={() => scrollToSection(link.href)}
+                to={link.href}
+                onClick={() => handleNavClick(link.href)}
                 className="text-muted-foreground hover:text-foreground transition-colors text-left py-2"
               >
                 {link.label}
-              </button>
+              </Link>
             ))}
             <Button
-              onClick={() => scrollToSection("#auditions")}
-              className="gradient-bg text-foreground w-full mt-2"
+              asChild
+              className="gradient-bg text-primary-foreground w-full mt-2"
             >
-              Apply Now
+              <Link to="/apply" onClick={() => setIsMobileMenuOpen(false)}>
+                Apply Now
+              </Link>
             </Button>
           </div>
         </div>

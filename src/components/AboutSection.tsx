@@ -55,7 +55,7 @@ const AboutSection = () => {
               style={{ animationDelay: `${index * 100}ms` }}
             >
               <div className="w-12 h-12 rounded-lg gradient-bg flex items-center justify-center mb-4 group-hover:glow-purple transition-all">
-                <feature.icon className="w-6 h-6 text-foreground" />
+                <feature.icon className="w-6 h-6 text-primary-foreground" />
               </div>
               <h3 className="text-xl font-semibold mb-2 text-foreground">
                 {feature.title}

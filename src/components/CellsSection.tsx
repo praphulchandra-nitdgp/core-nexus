@@ -84,7 +84,7 @@ const CellsSection = () => {
                   <img
                     src={cell.image}
                     alt={cell.name}
-                    className="w-full h-full object-cover rounded-xl"
+                    className="w-full h-full object-cover rounded-xl shadow-lg"
                   />
                   <div className="absolute inset-0 rounded-xl bg-gradient-iridescent opacity-20 group-hover:opacity-40 transition-opacity" />
                 </div>
@@ -109,7 +109,7 @@ const CellsSection = () => {
                     {cell.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-3 py-1 rounded-full text-sm gradient-border bg-muted/50 text-muted-foreground"
+                        className="px-3 py-1 rounded-full text-sm gradient-border bg-card text-muted-foreground"
                       >
                         {tag}
                       </span>
