@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
+import { motion } from "framer-motion";
 import orb1 from "@/assets/3d-orb-1.png";
 import orb2 from "@/assets/3d-orb-2.png";
 
@@ -18,7 +19,12 @@ const HeroSection = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Text Content */}
-          <div className="text-center lg:text-left space-y-6">
+          <motion.div
+            className="text-center lg:text-left space-y-6"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm text-muted-foreground">
               <Sparkles className="w-4 h-4 text-primary" />
               <span>CCA Audition 2026</span>
@@ -62,10 +68,15 @@ const HeroSection = () => {
                 Explore Cells
               </Button>
             </div>
-          </div>
+          </motion.div>
 
           {/* 3D Visual Section */}
-          <div className="relative flex items-center justify-center">
+          <motion.div
+            className="relative flex items-center justify-center"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
             {/* Main 3D orb image */}
             <div className="relative w-80 h-80 md:w-[450px] md:h-[450px]">
               <img
@@ -87,16 +98,21 @@ const HeroSection = () => {
               />
               <div className="absolute inset-0 rounded-full glow-cyan -z-10 scale-125" />
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+      <motion.div
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
+      >
         <div className="w-6 h-10 rounded-full border-2 border-muted-foreground/50 flex flex-col items-start justify-center p-2">
           <div className="w-1 h-2 bg-muted-foreground rounded-full" />
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };
