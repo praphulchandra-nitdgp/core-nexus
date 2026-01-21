@@ -1,6 +1,9 @@
 import React from "react";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 const AarohanSection = () => {
+  const { ref, inView } = useInView({ threshold: 0.3, triggerOnce: true });
   return (
     <section id="aarohan" className="relative h-[60vh] md:h-[70vh] lg:h-screen overflow-hidden">
       {/* YouTube Video Background */}
