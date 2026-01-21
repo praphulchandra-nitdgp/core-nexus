@@ -18,7 +18,7 @@ export default function Footer() {
       </div>
 
       {/* Upper content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 pt-16 pb-24">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 pt-16 pb-10">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
           {/* Column 1 — Logo */}
           <div className="md:col-span-6 flex items-center justify-center md:justify-start">
@@ -70,10 +70,12 @@ export default function Footer() {
       </div>
 
       {/* Bottom brand block */}
-      <div className="relative z-10 overflow-hidden border-t border-border">
-        <div className="section-divider" />
-        <div className="py-6 text-center text-xs text-muted-foreground">
-          © {new Date().getFullYear()} Centre For Cognitive Activities. All rights reserved.
+      <div className="relative z-10 overflow-hidden">
+        <h1 className="select-none text-[28vw] leading-none font-bold tracking-tight text-center gradient-text">
+          CCA
+        </h1>
+        <div className="absolute right-2 bottom-0 text-xs text-muted-foreground">
+          © {new Date().getFullYear()} Made with ❤️ WDCT | CCA.
         </div>
       </div>
     </footer>
