@@ -114,6 +114,22 @@ const Navbar = () => {
                 {link.label}
               </Link>
             ))}
+            <button
+              onClick={toggleTheme}
+              className="text-muted-foreground hover:text-foreground transition-colors text-left py-2 flex items-center gap-2"
+            >
+              {mounted && (currentTheme === "dark" ? (
+                <>
+                  <Sun className="w-4 h-4" />
+                  <span>Light Mode</span>
+                </>
+              ) : (
+                <>
+                  <Moon className="w-4 h-4" />
+                  <span>Dark Mode</span>
+                </>
+              ))}
+            </button>
             <Button
               asChild
               className="gradient-bg text-primary-foreground w-full mt-2"
