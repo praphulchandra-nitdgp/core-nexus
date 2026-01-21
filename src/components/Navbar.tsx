@@ -20,6 +20,10 @@ const Navbar = () => {
   const currentTheme = theme === "system" ? systemTheme : theme;
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
@@ -35,6 +39,10 @@ const Navbar = () => {
         element.scrollIntoView({ behavior: "smooth" });
       }
     }
+  };
+
+  const toggleTheme = () => {
+    setTheme(currentTheme === "dark" ? "light" : "dark");
   };
 
   return (
